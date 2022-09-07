@@ -27,9 +27,12 @@ def f3(x):
 # result = integrate.quad(f3,0,5)
 def f4(x):
     return 1/8 * x**(3/2)
-result = integrate.quad(f4,0,4)
+def f5(x):
+    return x/(pi * (1 + x**2))
+result = integrate.quad(f5,0,1)
+result2 = integrate.quad(f5,0,-1)
 # result = integrate.quad(f3,67,69)
-print("result is ",result)
+print("result is ",pi * (result[0] + result2[0]))
 '''
 result1 = integrate.quad(f3,-np.inf,5)
 result2 = integrate.quad(f3,-np.inf,2)
