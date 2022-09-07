@@ -25,9 +25,11 @@ def f3(x):
     return exp(-(x-miu)**2/(2*sigma**2))/(2*pi*sigma**2)**0.5
 # result = integrate.quad(f,0,1,args=(1,2,3))
 # result = integrate.quad(f3,0,5)
-result = integrate.quad(f3,-np.inf,2200)
+def f4(x):
+    return 1/8 * x**(3/2)
+result = integrate.quad(f4,0,4)
 # result = integrate.quad(f3,67,69)
-print("result is ",1 - result[0])
+print("result is ",result)
 '''
 result1 = integrate.quad(f3,-np.inf,5)
 result2 = integrate.quad(f3,-np.inf,2)
