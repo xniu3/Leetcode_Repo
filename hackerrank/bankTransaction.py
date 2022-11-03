@@ -14,8 +14,33 @@ def bankTransaction(transactions):
             bank -= num
             count += 1
     return len(transactions) - count
-
+def bankTransaction1(transactions):
+    from heapq import heappush, heappop, heapify
+    h = list()
+    balance = 0
+    n = len(transactions)
+    # print("n is ",n)
+    transcount = 0
+    for i in range(n):
+        # print("transaction value is ",transactions[i])
+        if transactions[i] >= 0 or i == n - 1:
+            while h:
+                min_amount = heappop(h)
+                # print("min amount is ",min_amount)
+                if balance >= min_amount:
+                    balance -= min_amount
+                    transcount += 1
+                else:
+                    break
+            h = list()
+            balance += transactions[i]
+            transcount += 1
+        else:
+            heappush(h, -transactions[i])
+    return transcount
 trans = [3,2,-5,-6, -1,4]
-print(bankTransaction(trans))
+print(bankTransaction1(trans))
 trans2 = [3, 2, -5, -1, -3, 3, -2]
-print(bankTransaction(trans2))
+print(bankTransaction1(trans2))
+trans3 = [10, -10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 ]
+print(bankTransaction1(trans3))
